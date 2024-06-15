@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    /*outline: solid 1px red;*/
+}
+body{
+    background: linear-gradient(90deg, rgb(10, 109, 202) 0%, rgb(218, 212, 200) 20%, rgb(47, 65, 221) 100%); 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+header{
+    background-color: whitesmoke;
+}
+header nav{
+    background-color: whitesmoke;
+}
+.carousel-item-prev {
+    display: block;
+  }
+.carousel-inner img{
+    height: 240px;
+    filter: brightness(50%);
+    object-fit: cover;
+}
+main{
+    min-height: 100vh;
+}
+footer{
+    background-color: whitesmoke;
+    margin-top: auto;
+}
+.checkbox-container {
+    white-space: nowrap;
+}
+.checkbox-item {
+    flex-shrink: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.checkbox-item input[type="checkbox"] {
+    margin-right: 5px;
+}
+.card img{
+    height: 20vh;
+}
+.card-body img{
+    object-fit: cover;
+}
