@@ -207,70 +207,114 @@ document.addEventListener("DOMContentLoaded", function() {
       //}
     //  event.date = parts.join('-');
   //  });
+ 
+  // Ordenar los eventos por fecha
   function bubbleSortEvents(events) {
-  let len = data.events.length;
-  for (let i = 0; i < len - 1; i++) {
-    for (let j = 0; j < len - 1 - i; j++) {
-      if (new Date(data.events[j].date) > new Date(data.events[j + 1].date)) {
-        // BARRIDO
-        let temp = data.events[j];
-        data.events[j] = data.events[j + 1];
-        data.events[j + 1] = temp;
+    let len = events.length;
+    for (let i = 0; i < len - 1; i++) {
+      for (let j = 0; j < len - 1 - i; j++) {
+        if (new Date(events[j].date) > new Date(events[j + 1].date)) {
+          let temp = events[j];
+          events[j] = events[j + 1];
+          events[j + 1] = temp;
+        }
       }
     }
   }
-  console.log (data.events);
-  }
+
   bubbleSortEvents(data.events);
-  
-  //data.events.forEach(event => {
-    //  console.log(`${event.name} - ${event.date}`);
-    //  });
-    // mostrar un solo evento
-       //Clasificar en eventos pasado y futuros 
-      let presentEvents = [];
-      let pastEvents = [];
-      let currentDate = new Date (data.currentDate)
-    
-      for (let event of data.events) {
-         let eventDate = new Date(event.date);
-          if (eventDate >= currentDate) {
-              presentEvents.push(event);
-          } else {
-             pastEvents.push(event);
-  
-            }
-      }
-      
-      console.log("Eventos Presentes:");
-      console.log(presentEvents);
-      console.log("\nEventos Pasados:");
-      console.log(pastEvents);
-      // Empieza el DOM
-      function displayEvents(pastEvents) {
-      
-      let contenedor = document.getElementById("card-temple")
-      const html = pastEvents.map(event => `
-          <div class="col-11 col-md-5 col-lg-2 p-0 m-3">
-          <div class="card  mx-auto h-100">
-            <img src="${event.image}" class="card-img-top img-fluid" alt="${event.category}">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title text-center"> ${event.name} </h5>
-              <p class="card-text mb-auto text-center"> ${event.description} </p>
-                <div class="mt-auto">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <p class="mb-0"> ${event.price} $</p>
-                    <a href="./Home.html" class="btn btn-primary">Details</a>
-                  </div>
-                </div>
+
+  // Clasificar eventos pasados
+  let pastEvents = [];
+  let currentDate = new Date(data.currentDate);
+
+  for (let event of data.events) {
+    let eventDate = new Date(event.date);
+    if (eventDate < currentDate) {
+      pastEvents.push(event);
+    }
+  }
+
+  // Crear y mostrar checkboxes dinámicos
+  function createCheckboxes(events) {
+    let categories = [...new Set(events.map(event => event.category))];
+    let checkboxesContainer = document.getElementById("checkbox-container");
+
+    categories.forEach(category => {
+      let label = document.createElement("label");
+      label.classList.add("form-check-label");
+      label.innerHTML = `
+        <input class="form-check-input" type="checkbox" value="${category}">
+        ${category}
+      `;
+      checkboxesContainer.appendChild(label);
+    });
+  }
+
+  createCheckboxes(pastEvents);
+
+  // Filtrar eventos
+  function filterEvents() {
+    let searchInput = document.getElementById("search-input").value.toLowerCase();
+    let checkboxes = document.querySelectorAll(".form-check-input");
+    let selectedCategories = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+
+    let filteredPastEvents = pastEvents.filter(event => 
+      selectedCategories.includes(event.category) && 
+      event.name.toLowerCase().includes(searchInput)
+    );
+
+    displayEvents(filteredPastEvents, "past-events-container");
+  }
+
+  document.getElementById("search-input").addEventListener("input", filterEvents);
+  document.getElementById("checkbox-container").addEventListener("change", filterEvents);
+
+  // Mostrar eventos en el contenedor
+  function displayEvents(events, containerId) {
+    let container = document.getElementById(containerId);
+    if (!container) return;
+
+         container.innerHTML = '';
+
+    if (events.length === 0) {;
+      container.innerHTML = `
+        <div class="no-results">
+          <h3>No hay publicaciones que coincidan con tu búsqueda.</h3>
+      <ul>
+        <li>Revisa la ortografía de la palabra.</li>
+        <li>Utiliza palabras más genéricas o menos palabras.</li>
+        <li>Navega por las categorías para encontrar un producto similar.</li>
+      </ul>
+        </div>
+      `;
+      return;
+    }
+
+    const html = events.map(event => `
+      <div class="col-11 col-md-5 col-lg-2 p-0 m-3">
+        <div class="card mx-auto h-100">
+          <img src="${event.image}" class="card-img-top img-fluid" alt="${event.category}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-center"> ${event.name} </h5>
+            <p class="card-text mb-auto text-center"> ${event.description} </p>
+            <div class="mt-auto">
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-0"> ${event.price} $</p>
+                <a href="./details.html?id=${event._id}" class="btn btn-primary">Details</a>
+              </div>
             </div>
           </div>
         </div>
-        </div> 
-        `).join('');
-      
-      contenedor.innerHTML = html;
-      }
-      displayEvents(pastEvents);
+      </div>
+    `).join('');
+
+    container.innerHTML = html;
+  }
+
+  displayEvents(pastEvents, "past-events-container");
+  
+
   });
 // Diego Lopez 05-07-2024
+// Diego Lopez 22-07-2024
