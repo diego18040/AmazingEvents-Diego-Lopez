@@ -256,23 +256,6 @@ function createCheckboxes(events) {
 
 createCheckboxes(data.events);
 
-// Filtrar eventos
-function filterEvents() {
-  let searchInput = document.getElementById("search-input").value.toLowerCase();
-  let checkboxes = document.querySelectorAll(".form-check-input");
-  let selectedCategories = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-
-  let filteredFutureEvents = futureEvents.filter(event => 
-    selectedCategories.includes(event.category) && 
-    event.name.toLowerCase().includes(searchInput)
-  );
-
-  displayEvents(filteredFutureEvents, "future-events-container");
-}
-
-document.getElementById("search-input").addEventListener("input", filterEvents);
-document.getElementById("checkbox-container").addEventListener("change", filterEvents);
-
 // Mostrar eventos en el contenedor
 function displayEvents(events, containerId) {
   let container = document.getElementById(containerId);
@@ -316,6 +299,29 @@ function displayEvents(events, containerId) {
 }
 
 displayEvents(futureEvents, "future-events-container");
+
+  // Filtrar eventos
+  function filterEvents() {
+    let searchInput = document.getElementById("search-input").value.toLowerCase();
+    let checkboxes = document.querySelectorAll(".form-check-input");
+    let selectedCategories = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+
+    if (selectedCategories.length === 0 && searchInput === "") {
+      displayEvents(futureEvents, "future-events-container");
+    } else {
+      let filteredFutureEvents = futureEvents.filter(event => 
+        (selectedCategories.length === 0 || selectedCategories.includes(event.category)) && 
+        event.name.toLowerCase().includes(searchInput)
+      );
+
+    displayEvents(filteredFutureEvents, "future-events-container");
+  }
+}
+
+  document.getElementById("search-input").addEventListener("input", filterEvents);
+  document.getElementById("checkbox-container").addEventListener("change", filterEvents);
+
+
 
 });
 
