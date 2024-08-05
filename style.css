@@ -4,17 +4,21 @@
     /*outline: solid 1px red;*/
 }
 body{
-    background: linear-gradient(90deg, rgb(10, 109, 202) 0%, rgb(218, 212, 200) 20%, rgb(47, 65, 221) 100%); 
+   /* background: linear-gradient(90deg, rgb(10, 109, 202) 0%, rgb(218, 212, 200) 20%, rgb(47, 65, 221) 100%); */
+    background-image: url(./Recursos_Amazing_Events_Task_1/download.gif);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 
 }
 header{
-    background-color: whitesmoke;
+    background-image: url(./Recursos_Amazing_Events_Task_1/Navbar.png);
+    
 }
 header nav{
-    background-color: whitesmoke;
+    background-image: url(./Recursos_Amazing_Events_Task_1/Navbar.png);
+    background-size: 200px; /* Asegura que la imagen cubra toda la pantalla */
+    background-position: center; 
 }
 .carousel-item-prev {
     display: block;
@@ -64,8 +68,9 @@ footer{
     display: flex;
     justify-content: center;
     background-color: whitesmoke;
-    color: red;
-    
+    color: rgb(175, 175, 175);
+    text-align: center; 
+    margin-top: 10rem; 
 }
 .sombra {
     background-color: whitesmoke;

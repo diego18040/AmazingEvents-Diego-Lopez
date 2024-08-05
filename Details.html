@@ -11,80 +11,12 @@
 <body>
   <div class="container-fluid"> <!--Alineacion y margen al body-->
   <div class="row"><!--Alineacion y margen al header-->
-  <header class="col-12 p-0">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-          <a class="navbar-brand col-4 col-sm-2 col-md-1" href="./Home.html">
-            <img src="./Recursos_Amazing_Events_Task_1/amazing_brand.png" alt="Bootstrap" width="100" height="24">
-          </a>
-          <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <a class="nav-link" href="./Home.html">Home</a>
-              <a class="nav-link" href="./UpcomingEvents.html">Upcoming Events</a>
-              <a class="nav-link" href="./PastEvents.html">Past Events</a>
-              <a class="nav-link" href="./Contact.html">Contact</a>
-              <a class="nav-link" href="./Stats.html">Stats</a>
-            </div>
-          </div>
-      </div>
-      </nav>
-</header>
+    <header class="col-12 p-0" id="navbar"></header>
 </div>
   <!--Inicia el main con cards-->
   <div class="row">
   <main class="p-0">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="./Recursos_Amazing_Events_Task_1/optional_banner_1.jpg" class="d-block w-100" alt="optional_banner_1">
-          <div class="carousel-caption d-md-block">
-            <h1 class="fw-bold fs-1">Home</h1>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="./Recursos_Amazing_Events_Task_1/optional_banner_2.jpg" class="d-block w-100" alt="optional_banner_2">
-          <div class="carousel-caption d-md-block">
-            <h1 class="fw-bold fs-1">Upcoming Events</h1>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="./Recursos_Amazing_Events_Task_1/optional_banner_3.jpg" class="d-block w-100" alt="optional_banner_3">
-          <div class="carousel-caption d-md-block">
-            <h1 class="fw-bold fs-1">Past Events</h1>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="./Recursos_Amazing_Events_Task_1/optional_banner_4.jpg" class="d-block w-100" alt="optional_banner_4">
-          <div class="carousel-caption d-md-block">
-            <h1 class="fw-bold fs-1">Contact</h1>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="./Recursos_Amazing_Events_Task_1/optional_banner_5.jpg" class="d-block w-100" alt="optional_banner_5">
-          <div class="carousel-caption d-md-block">
-            <h1 class="fw-bold fs-1">Stats</h1>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden"></span>
-      </button>
-    </div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false"></div>
     <div class="container col-8 mt-5 col-12">
       <div class="sombra row row-cols-1 row-cols-sm-2 justify-content-center align-items-center " id="details-container">
        <!--Aqui va los detalles de las cards-->
@@ -93,32 +25,12 @@
     </main>
     
 <!--Redes Sociales-->
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 mb-0 pb-0 border-top">
-    <ul class="nav col-12 col-md-6 justify-content-center justify-content-md-start list-unstyled d-flex mb-4">
-      <li class="ms-3"><a class="text-body-secondary d-flex justify-content-center align-items-center" href="#">
-        <img src="./Recursos_Amazing_Events_Task_1/facebook.png" class="img-fluid w-50" alt="Facebook">
-      </a>
-    </li>
-  <li class="ms-3"><a class="text-body-secondary d-flex justify-content-center align-items-center" href="#">
-    <img src="./Recursos_Amazing_Events_Task_1/instagram.png" class="img-fluid w-50" alt="Instagram">
-  </a></li>
-<li class="ms-3"><a class="text-body-secondary d-flex justify-content-center align-items-center" href="#">
-  <img src="./Recursos_Amazing_Events_Task_1/whatsapp.png" class="img-fluid w-50" alt="whatsapp">
-</a></li>
-</ul>
-<!--Contenedor del Logo y empresa-->
-        <div class="col-12 col-md-6 d-flex flex-column align-items-center align-items-md-end">
-         <a href="index.html" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1 d-flex justify-content-center justify-content-md-end logo-footer">
-         <img src="./Recursos_Amazing_Events_Task_1/amazing_brand.png" class="img-fluid" alt="Amazing Brand" width="200" height="100">
-          </a>
-          <span class="mb-3 mb-md-0 text-body-secondary pe-2">© 2024 Company, Inc</span>
-        </div>
-      </footer>
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 mb-0 pb-0 border-top" id="footer"></footer>
     </div>
   </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="./Details.js"></script>
+  <script type="module" src="./Details.js"></script>
   </html>
 <!--Diego Lopez 14-06-2024-->
 <!--Diego Lopez 22-07-2024-->
