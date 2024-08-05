@@ -1,9 +1,9 @@
-import { loadNavbar, loadFooter, loadCarrusel } from "./index.js";
+import { loadNavbar, loadFooter, loadCarruselhome } from "./index.js";
 
 document.addEventListener("DOMContentLoaded", async function() {
   loadNavbar();
   loadFooter();
-  loadCarrusel();
+  loadCarruselhome();
 
   // Obtener el ID del evento desde la URL
   const params = new URLSearchParams(window.location.search);
